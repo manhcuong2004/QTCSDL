@@ -1,0 +1,59 @@
+header.header 
+  .container-logo
+    .logo
+      table
+        tr
+          td
+            img(src="" alt="" width="5px" height="5px")
+          td
+            .name SNUMA
+            .text Quản lí phòng trọ
+  .function
+    .notification
+      i.fa-solid.fa-bell
+      .name-function Thông báo
+    .manage-home
+      i.fa-solid.fa-house
+      .name-function Quản lí nhà
+    .account
+      i.fa-solid.fa-user
+      .name-function Tài khoản
+    .logout
+      i.fa-solid.fa-right-from-bracket
+      .name-function Đăng xuất
+
+nav
+  .navigation.row
+    .container-name.col
+      .lodging.card
+        table
+          tr
+            td
+              i.fa-solid.fa-house
+            td
+              .text
+                .status Đang quản lí
+                .name-lodging Nhà trọ MK
+    .container-management.col-10
+      .management-function.row
+          a.manage.room.card.col(href=`${prefixAdmin}/manage-rooms`)
+              i.fa-solid.fa-person-shelter
+              .text Quản lý phòng
+          a.manage.bill.card.col(href=`${prefixAdmin}/manage-bills`)
+              i.fa-solid.fa-money-bill-wave
+              .text Quản lý hóa đơn
+          a.manage.contract.card.col(href=`${prefixAdmin}/manage-contracts`)
+              i.fa-solid.fa-file-contract
+              .text Quản lý hợp đồng
+          a.manage.tenant.card.col(href=`${prefixAdmin}/manage-guests`)
+              i.fa-solid.fa-users
+              .text Quản lý khách thuê
+          a.manage.revenue.card.col(href=`${prefixAdmin}/manage-revenue`)
+              i.fa-solid.fa-money-bill-trend-up
+              .text Quản lý doanh thu
+          .manage.account-guest.card.col
+            i.fa-regular.fa-user
+            .text Tài khoản khách
+          //- .manage.chat.card.col
+          //-   i.fa-solid.fa-comments
+          //-   .text Nhắn tin

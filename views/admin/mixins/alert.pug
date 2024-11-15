@@ -1,0 +1,9 @@
+mixin alert-success(time)
+  -if (messages.success)
+    div(
+      class="alert alert-success" 
+      show-alert
+      data-time=time
+    )
+      strong= messages.success
+      button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")

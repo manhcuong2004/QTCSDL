@@ -1,0 +1,26 @@
+{
+  "name": "qtcsdl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.1",
+    "msnodesqlv8": "^4.2.1",
+    "mssql": "^11.0.1",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.5",
+    "nodemon": "^3.1.7"
+  }
+}

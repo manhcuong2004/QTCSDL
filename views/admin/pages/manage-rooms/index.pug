@@ -1,0 +1,88 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  section
+    +alert-success(4000)
+    .container.row
+      .container-decs.col-4
+        .text Quản lý danh sách phòng
+        .text-sub Tất cả danh sách phòng trong Nhà trọ MK
+      .search.col-6
+        input(type="text" placeholder="Tìm kiếm phòng")
+      a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop")
+        i.fa-solid.fa-plus
+
+    .table-rooms.table-responsive
+      table.table.table-bordered
+        thead.table-secondary
+          tr
+            th Tên phòng
+            th Diện tích
+            th Số lượng người
+            th Giá
+            th Trạng thái phòng
+            th Option
+        tbody.table-success
+          each item in rooms
+            tr
+              td #{item.maphong}
+              td #{item.dientich}
+              td #{item.soluongnguoi}
+              td #{item.gia}
+              td #{item.trangthai_phong}
+              td 
+                button.btn.btn-danger(type="button" onclick=`deleteRoom('${item.maphong}')`) Xóa
+                button.btn.btn-warning(type="button" onclick=`editRoom('${item.maphong}')`) Sửa
+  .modal.fade#staticBackdrop(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true")
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#staticBackdropLabel Thêm phòng
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(
+            action=`${prefixAdmin}/manage-rooms`
+            id="form-create-product"
+            method="POST"
+            )
+            label(for="name-room") Tên phòng 
+              b(style="color: red;") *
+            input#name-room(
+              type="text" 
+              name="maphong" 
+              placeholder="Tên phòng" 
+              required)
+
+            label(for="area") Diện tích 
+              b(style="color: red;") *
+            input#area(
+              type="text" 
+              name="dientich" 
+              placeholder="Diện tích" 
+              required)
+
+            label(for="countofp") Số lượng người 
+              b(style="color: red;") *
+            input#countofp(
+              type="text" 
+              name="soluongnguoi" 
+              placeholder="Số lượng người" 
+              required)
+
+            label(for="price") Giá 
+              b(style="color: red;") *
+            input#price(
+              type="text" 
+              name="gia" 
+              placeholder="Giá" 
+              required)
+            .modal-footer
+              div(class="form-group")
+                button( 
+                    type="submit"    
+                    class="btn btn-primary"
+                    ) Tạo mới
+  script(src="/js/admin/rooms.js")
+
+              
