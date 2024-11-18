@@ -47,15 +47,13 @@ block main
           .text-sub Bạn sẽ thống kê được các khoản thu / chi qua hàng tháng, quý, năm
       .money-in.col-3
           .text Tiền vào
-          .money 1.603.300 u đ
+          .money 1.603.300 đ
       .summary.col-3
           .text Tổng kết theo
           select.form-select.form-select-lg.summaryby(name="summaryby" id="summaryby")
               option(value="month" selected) Tháng
               option(value="quarter") Quý
               option(value="year") Năm
- 
-      
     .table-rooms.table-responsive
       table.table.table-bordered
         thead.table-secondary
@@ -138,3 +136,4 @@ block main
             td Yes
             td Yes
             td Yes
+    script(src="/js/admin/rooms.js")

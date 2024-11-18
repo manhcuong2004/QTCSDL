@@ -1,0 +1,60 @@
+mixin editRoom(prefixAdmin)
+  .modal.fade#modalEdit(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true")
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#modalEditLabel Sửa phòng
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(
+            action=`${prefixAdmin}/manage-rooms?_method=PUT`
+            id="form-edit-room"
+            method="POST"
+          )
+            //- input(type="hidden" name="_method" value="PUT")
+            label(for="name-room-edit") Tên phòng 
+                b(style="color: red;") *
+            input#name-room-edit(
+                type="text" 
+                name="maphong" 
+                placeholder="Tên phòng" 
+                readonly)
+
+            label(for="area-edit") Diện tích 
+                b(style="color: red;") *
+            input#area-edit(
+                type="text" 
+                name="dientich" 
+                placeholder="Diện tích" 
+                required)
+
+            label(for="countofp-edit") Số lượng người 
+                b(style="color: red;") *
+            input#countofp-edit(
+                type="text" 
+                name="soluongnguoi" 
+                placeholder="Số lượng người" 
+                required)
+
+            label(for="status-edit") Trạng thái phòng 
+                b(style="color: red;") *
+            input#status-edit(
+                type="text" 
+                name="trangthai_phong" 
+                placeholder="Trạng thái" 
+                required)
+
+            label(for="price-edit") Giá 
+                b(style="color: red;") *
+            input#price-edit(
+                type="text" 
+                name="gia" 
+                placeholder="Giá" 
+                required)
+            .modal-footer
+              div(class="form-group")
+                button( 
+                    type="submit"    
+                    class="btn btn-primary"
+                    ) Cập nhật
+        

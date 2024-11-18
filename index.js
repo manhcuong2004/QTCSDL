@@ -5,6 +5,7 @@ const systemConfig = require('./config/system');
 const bodyParser = require('body-parser');
 const flash = require('express-flash')
 const expresSession = require('express-session')
+const methodOverride = require('method-override')
 
 
 const app = express()
@@ -12,9 +13,9 @@ const port = process.env.PORT
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.locals.prefixAdmin = systemConfig.prefixAdmin
 app.use(flash());
 app.use(expresSession({
     secret: 'cuongcookcool',
@@ -25,6 +26,9 @@ app.use(expresSession({
 const route = require("./routes/client/index-route");
 const routeAdmin = require("./routes/admin/index-route");
 app.use(express.static(`./public`));
+
+app.locals.prefixAdmin = systemConfig.prefixAdmin
+
 
 route(app);
 routeAdmin(app);

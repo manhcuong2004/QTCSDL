@@ -1,0 +1,50 @@
+mixin createBill(prefixAdmin)
+  .modal.fade#modalCreate(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true")
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#modalCreateLabel Thêm phòng
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(
+            action=`${prefixAdmin}/manage-bills`
+            id="form-create-product"
+            method="POST"
+          )
+            label(for="name-room") 
+              b(style="color: red;") *
+            input#name-room(
+              type="text" 
+              name="maphong" 
+              placeholder="Tên phòng" 
+              required)
+
+            label(for="area") Diện tích 
+              b(style="color: red;") *
+            input#area(
+              type="text" 
+              name="dientich" 
+              placeholder="Diện tích" 
+              required)
+
+            label(for="countofp") Số lượng người 
+              b(style="color: red;") *
+            input#countofp(
+              type="text" 
+              name="soluongnguoi" 
+              placeholder="Số lượng người" 
+              required)
+
+            label(for="price") Giá 
+              b(style="color: red;") *
+            input#price(
+              type="text" 
+              name="gia" 
+              placeholder="Giá" 
+              required)
+            .modal-footer
+              div(class="form-group")
+                button( 
+                    type="submit"    
+                    class="btn btn-primary"
+                    ) Tạo mới

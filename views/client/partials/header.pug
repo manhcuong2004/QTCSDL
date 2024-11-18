@@ -1,0 +1,47 @@
+header.header
+  .container-logo
+    .logo
+      table
+        tr
+          td
+            img(src="" alt="" )  
+          td
+            .name SNUMA
+            .text Quản lí phòng trọ
+  .function
+    .notification
+      i.fa-solid.fa-bell
+      .name-function Thông báo
+    .manage-home
+      i.fa-solid.fa-house
+      .name-function Quản lí nhà
+    a.account(href="/account") 
+      i.fa-solid.fa-user
+      .name-function Tài khoản
+    a.logout(href="/login") 
+      i.fa-solid.fa-right-from-bracket
+      .name-function Đăng xuất
+
+nav
+  .navigation.row
+    .container-name.col
+      .lodging.card
+        table
+          tr
+            td
+              i.fa-solid.fa-house
+            td
+              .text
+                .status Chào mừng
+                .name-lodging Nhà trọ MK
+    .container-management.col-10
+      .management-function.row
+        a.manage.contract.card.col(href="/contract")
+          i.fa-solid.fa-file-contract
+          .text Xem hợp đồng
+        a.manage.bill.card.col(href="/bill")
+          i.fa-solid.fa-money-bill-wave
+          .text Xem hóa đơn
+        a.manage.tenant.card.col(href="/tenant")
+          i.fa-solid.fa-users
+          .text Xem thông tin bản thân

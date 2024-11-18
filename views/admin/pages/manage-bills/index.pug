@@ -1,6 +1,8 @@
 extends ../../layouts/default.pug
+include ./create-bill.pug
 
 block main
+
   div.navbar
       button &larr; Năm trước
       .year-label
@@ -47,88 +49,44 @@ block main
         .text-sub Bạn sẽ thấy các hóa đơn hàng tháng được lập 
       .search.col-6
         input(type="text" placeholder="Tìm kiếm hóa đơn")
-      .add-room.col
-        i.fa-solid.fa-plus
+      .btn-add.col
+        a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
+          i.fa-solid.fa-plus
 
     .table-rooms.table-responsive
       table.table.table-bordered
         thead.table-secondary
           tr
-            th
-            th
-            th Tên phòng
-            th Diện tích
-            th Giá thuê
-            th Mức giá tiền cọc
-            th Tiền nợ
-            th Khách thuê
-            th Ngày lập hóa đơn
-            th Chu kì thu tiền
-            th Ngày vào ở
-            th Thời gian hợp đồng
-            th Tình trạng
-            th Tài chính
+            th Ngày tạo
+            th Tổng tiền
+            th Trạng thái thanh toán
+            th Phòng
+            th cccd
+            th Xóa | Sửa
         tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-danger
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
+          each item in bills
+            tr
+              td #{item.ngaytao}
+              td #{item.tongtien}
+              td #{item.trangthai_thanhtoan}
+              td #{item.maphong}
+              td #{item.cccd}
+              td 
+                .btn-action
+                  button.btn.btn-danger.btn-delete(
+                    type="button" 
+                    data-id=item.mahoadon
+                    button-delete
+                    ) Xóa
+                  a.btn.btn-warning.btn-edit(
+                    type="button" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalEdit" 
+                    data-bill-id=item.mahoadon
+                    data-date=item.ngaytao
+                    data-money=item.tongtien
+                    data-status=item.trangthai_thanhtoan
+                    data-cccd=item.cccd
+                    ) Sửa
+    +createBill(prefixAdmin)
+  script(src="/js/admin/rooms.js")

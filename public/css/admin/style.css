@@ -216,9 +216,9 @@ section {
 }
 
 .search {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     height: 40px;
 
 }
@@ -239,7 +239,7 @@ section {
 
 .add-room {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     width: 100%;
     background: none;
@@ -394,12 +394,19 @@ form input[type="submit"]:hover {
     position: fixed;
     right: 0;
     top: 20px;
-    background-color: rgba(72, 187, 120, 0.8);
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+}
+
+.alert.alert-success {
+    background-color: #128a4f;
+}
+
+.alert.alert-error {
+    background-color: rgb(217, 78, 78);
 }
 
 .alert strong {
@@ -420,4 +427,67 @@ form input[type="submit"]:hover {
 .alert.hide {
     opacity: 0;
     transition: opacity 0.5s ease;
+}
+
+.btn-action {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+}
+
+th,
+td {
+    text-align: center;
+}
+
+.btn-add {
+    display: flex;
+    justify-content: end;
+}
+
+
+.container.info-list {
+    margin-top: 30px;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 12px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+}
+
+.value {
+    color: #555;
+    text-align: right;
+    flex: 2;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    word-break: break-word;
 }

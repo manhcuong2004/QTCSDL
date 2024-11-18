@@ -7,3 +7,13 @@ mixin alert-success(time)
     )
       strong= messages.success
       button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")
+
+mixin alert-error(time)
+  -if (messages.error)
+    div(
+      class="alert alert-error" 
+      show-alert
+      data-time=time
+    )
+      strong= messages.error
+      button.btn-close(type="button" data-bs-dismiss="alert" aria-label="Close")

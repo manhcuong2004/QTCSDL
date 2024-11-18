@@ -1,93 +1,57 @@
 extends ../../layouts/default.pug
+include ./create-contract.pug
 
 block main
   section
     .container.row
-      .container-decs.col-4
+      .container-decs.col-5
         .text Quản lý danh sách hợp đồng 
         .text-sub Tất cả danh sách hợp đồng trong nhà trọ của bạn
-      .search.col-6
+      .search.col-5
         input(type="text" placeholder="Tìm kiếm hợp đồng")
+      .btn-add.col
+        a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
+          i.fa-solid.fa-plus
 
     .table-rooms.table-responsive
       table.table.table-bordered
         thead.table-secondary
           tr
-            th
-            th
-            th Tên phòng
-            th Diện tích
-            th Giá thuê
-            th Mức giá tiền cọc
-            th Tiền nợ
-            th Khách thuê
-            th Ngày lập hóa đơn
-            th Chu kì thu tiền
-            th Ngày vào ở
-            th Thời gian hợp đồng
-            th Tình trạng
-            th Tài chính
+            th Mã hợp đồng
+            th Ngày tạo
+            th Ngày hết hạn
+            th Trạng thái
+            th Tiền cọc
+            th cccd
+            th Phòng
+            th Xóa | Sửa
         tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-danger
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
+          each item in contracts
+            tr
+              td #{item.mahopdong}
+              td #{item.ngaytao}
+              td #{item.ngayhethan}
+              td #{item.trangthai_hopdong}
+              td #{item.sotien_coc}
+              td #{item.cccd}
+              td #{item.maphong}
+              td 
+                .btn-action
+                  button.btn.btn-danger.btn-delete(
+                    type="button" 
+                    data-id=item.mahopdong
+                    button-delete
+                    ) Xóa
+                  a.btn.btn-warning.btn-edit(
+                    type="button" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalEdit" 
+                    data-contract-id=item.mahopdong
+                    data-date-start=item.ngaytao
+                    data-date-end=item.ngayhethan
+                    data-status=item.trangthai_hopdong
+                    data-money=item.sotien_coc
+                    data-cccd=item.cccd
+                    data-room-id=item.maphong
+                    ) Sửa
+  +createContract(prefixAdmin)

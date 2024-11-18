@@ -222,7 +222,7 @@
         .search {
             margin-top: 10px;
             display: flex;
-            justify-content: end;
+            justify-content: center;
             height: 40px;
 
         }
@@ -328,6 +328,10 @@
         form input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        .btn-add {
+            display: flex;
+        }
     </style>
 </head>
 
@@ -420,16 +424,18 @@
 
     <section>
         <div class="container row">
-            <div class="container-decs col-4">
+            <div class="container-decs col-5">
                 <div class="text">Quản lý danh sách phòng</div>
                 <div class="text-sub">Tất cả danh sách phòng trong Nhà trọ MK</div>
             </div>
-            <div class="search col-6">
+            <div class="search col-5">
                 <input type="text" placeholder="Tìm kiếm phòng" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             </div>
-            <button class="add-room col" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fa-solid fa-plus"></i>
-            </button>
+            <div class="btn-add col">
+                <button class="add-room col" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
         </div>
 
         <div class="table-rooms table-responsive">

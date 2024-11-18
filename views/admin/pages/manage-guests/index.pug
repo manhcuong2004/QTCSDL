@@ -12,81 +12,40 @@ block main
       table.table.table-bordered
         thead.table-secondary
           tr
-            th
-            th
-            th Tên phòng
-            th Diện tích
-            th Giá thuê
-            th Mức giá tiền cọc
-            th Tiền nợ
-            th Khách thuê
-            th Ngày lập hóa đơn
-            th Chu kì thu tiền
-            th Ngày vào ở
-            th Thời gian hợp đồng
-            th Tình trạng
-            th Tài chính
+            th cccd
+            th Tên khách hàng
+            th Số điện thoại
+            th Giới tính
+            th Ngày sinh
+            th Quê quán
+            th Phòng ở
+            th Xóa | Sửa
         tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-danger
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-        tbody.table-success
-          tr
-            td 1
-            td Anna
-            td Pitt
-            td 35
-            td New York
-            td USA
-            td Female
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
-            td Yes
+          each item in guests
+            tr
+              td #{item.cccd}
+              td #{item.tenkh}
+              td #{item.sdtkhach}
+              td #{item.gioitinh}
+              td #{item.ngaysinh}
+              td #{item.quequan}
+              td #{item.maphong}
+              td 
+                .btn-action
+                  button.btn.btn-danger.btn-delete(
+                    type="button" 
+                    data-id=item.cccd
+                    button-delete
+                    ) Xóa
+                  a.btn.btn-warning.btn-edit(
+                    type="button" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalEdit" 
+                    data-cccd=item.cccd
+                    data-name=item.tenkh
+                    data-phoneNumber=item.sdtkhach
+                    data-gender=item.gioitinh
+                    data-ngaysinh=item.ngaysinh
+                    data-room-id=item.maphong
+                    ) Sửa
+        

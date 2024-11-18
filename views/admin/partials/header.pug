@@ -15,10 +15,10 @@ header.header
     .manage-home
       i.fa-solid.fa-house
       .name-function Quản lí nhà
-    .account
+    a.account(href=`${prefixAdmin}/account-admin`)
       i.fa-solid.fa-user
       .name-function Tài khoản
-    .logout
+    a.logout(href=`/login`)
       i.fa-solid.fa-right-from-bracket
       .name-function Đăng xuất
 
@@ -51,9 +51,9 @@ nav
           a.manage.revenue.card.col(href=`${prefixAdmin}/manage-revenue`)
               i.fa-solid.fa-money-bill-trend-up
               .text Quản lý doanh thu
-          .manage.account-guest.card.col
-            i.fa-regular.fa-user
-            .text Tài khoản khách
+          a.manage.account-guest.card.col(href=`${prefixAdmin}/account-guests`)
+              i.fa-regular.fa-user
+              .text Tài khoản khách
           //- .manage.chat.card.col
           //-   i.fa-solid.fa-comments
           //-   .text Nhắn tin
