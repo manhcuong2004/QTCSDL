@@ -18,17 +18,13 @@ module.exports.manageRoom = async (req, res) => {
 module.exports.create = async (req, res) => {
     try {
         const pool = await connect;
-        const sqlString = `
-            INSERT INTO phongtro (maphong, dientich, soluongnguoi, gia, trangthai_phong)
-            VALUES (@id, @area, @countp, @price, N'Trống')
-        `;
         await pool.request()
             .input('id', sql.Char(10), req.body.maphong)
             .input('area', sql.Int, req.body.dientich)
             .input('countp', sql.Int, req.body.soluongnguoi)
             .input('price', sql.Money, req.body.gia)
-            .query(sqlString);
-        req.flash('success', 'Thêm phòng mới thành công!');
+            .execute('spCreateRoom')
+        req.flash('success', 'New room added successfully!');
         res.redirect(req.headers.referer);
     } catch (err) {
         console.error("Error create room:", err.message || err);
@@ -41,23 +37,14 @@ module.exports.create = async (req, res) => {
 module.exports.edit = async (req, res) => {
     try {
         const pool = await connect;
-        const sqlString = `
-          UPDATE phongtro 
-          SET dientich = @area, 
-              soluongnguoi = @countp, 
-              gia = @price, 
-              trangthai_phong = @status
-          WHERE maphong = @id
-      `;
-
         await pool.request()
+            // .input('status', sql.NVarChar, req.body.trangthai_phong)   
+            .input('id', sql.Char(10), req.body.maphong)
             .input('area', sql.Int, req.body.dientich)
             .input('countp', sql.Int, req.body.soluongnguoi)
             .input('price', sql.Money, req.body.gia)
-            .input('status', sql.NVarChar, req.body.trangthai_phong)
-            .input('id', sql.Char(10), req.body.maphong)
-            .query(sqlString);
-
+            .execute('spCheckEditRoom')
+        // .query(sqlString);
         req.flash('success', 'Sửa phòng thành công!');
         res.redirect(req.headers.referer);
     } catch (err) {
@@ -71,12 +58,11 @@ module.exports.delete = async (req, res) => {
 
     try {
         const pool = await connect;
-        const sqlString = `DELETE FROM phongtro WHERE maphong = @id`;
         let id = req.params.id
         await pool.request()
             .input('id', sql.Char(10), id)
-            .query(sqlString);
-        req.flash('success', 'Xóa phòng thành công!');
+            .execute('spDelRoom')
+        req.flash('success', 'Delete room success!');
         res.redirect(req.headers.referer);
     } catch (err) {
         console.error("Error delete room:", err.message || err);

@@ -19,7 +19,9 @@ app.use(bodyParser.json());
 app.use(flash());
 app.use(expresSession({
     secret: 'cuongcookcool',
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 60000 },
+    // saveUninitialized: true,
+    // resave: false,
 }));
 
 // khai báo route

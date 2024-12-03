@@ -1,8 +1,11 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 include ./create-contract.pug
 
 block main
   section
+    +alert-success(4000)
+    +alert-error(4000)
     .container.row
       .container-decs.col-5
         .text Quản lý danh sách hợp đồng 
@@ -55,3 +58,6 @@ block main
                     data-room-id=item.maphong
                     ) Sửa
   +createContract(prefixAdmin)
+  script(src="/js/admin/contracts.js")
+  script(src="/js/script.js")
+

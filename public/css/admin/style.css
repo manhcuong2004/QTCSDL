@@ -299,6 +299,12 @@ footer {
     flex-direction: column;
     align-items: center;
     padding: 8px 16px;
+    cursor: pointer;
+
+}
+
+.navbar .year-label:hover {
+    background-color: #e0f7ef;
 }
 
 .navbar .year-label.active {
@@ -341,6 +347,7 @@ footer {
     width: 200px;
 }
 
+/* Form container */
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -350,7 +357,10 @@ form {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-form input[type="text"] {
+/* Common styles for input fields */
+form input[type="text"],
+form input[type="password"],
+form input[type="date"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -359,12 +369,16 @@ form input[type="text"] {
     font-size: 16px;
 }
 
-form input[type="text"]:focus {
+/* Focus effect for input fields */
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="date"]:focus {
     outline: none;
     border-color: #80bdff;
     box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
 }
 
+/* Label styles */
 form label {
     font-size: 14px;
     font-weight: 600;
@@ -373,6 +387,30 @@ form label {
     display: block;
 }
 
+/* Radio button container */
+form div#gender {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Radio button labels */
+form div#gender label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #495057;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Radio buttons */
+form input[type="radio"] {
+    margin-right: 5px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Submit button */
 form input[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -385,6 +423,7 @@ form input[type="submit"] {
     transition: background-color 0.3s;
 }
 
+/* Submit button hover effect */
 form input[type="submit"]:hover {
     background-color: #0056b3;
 }

@@ -3,7 +3,7 @@ mixin createContract(prefixAdmin)
     .modal-dialog.modal-dialog-scrollable
       .modal-content
         .modal-header
-          h5.modal-title#modalCreateLabel Thêm phòng
+          h5.modal-title#modalCreateLabel Tạo hợp đồng
           button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
         .modal-body
           form(
@@ -11,40 +11,40 @@ mixin createContract(prefixAdmin)
             id="form-create-product"
             method="POST"
           )
-            label(for="name-room") 
+            label(for="ngayhethan") Ngày hết hạn 
               b(style="color: red;") *
-            input#name-room(
+            input#ngayhethan(
+              type="date" 
+              name="ngayhethan" 
+              placeholder="Ngày hết hạn" 
+              required)
+
+            label(for="sotien_coc") Số tiền cọc
+              b(style="color: red;") *
+            input#sotien_coc(
+              type="text" 
+              name="sotien_coc" 
+              placeholder="Số tiền cọc" 
+              required)
+
+            label(for="cccd") CCCD
+              b(style="color: red;") *
+            input#cccd(
+              type="text" 
+              name="cccd" 
+              placeholder="CCCD" 
+              required)
+
+            label(for="maphong") Phòng
+              b(style="color: red;") *
+            input#maphong(
               type="text" 
               name="maphong" 
-              placeholder="Tên phòng" 
-              required)
-
-            label(for="area") Diện tích 
-              b(style="color: red;") *
-            input#area(
-              type="text" 
-              name="dientich" 
-              placeholder="Diện tích" 
-              required)
-
-            label(for="countofp") Số lượng người 
-              b(style="color: red;") *
-            input#countofp(
-              type="text" 
-              name="soluongnguoi" 
-              placeholder="Số lượng người" 
-              required)
-
-            label(for="price") Giá 
-              b(style="color: red;") *
-            input#price(
-              type="text" 
-              name="gia" 
-              placeholder="Giá" 
+              placeholder="Phòng" 
               required)
             .modal-footer
               div(class="form-group")
                 button( 
-                    type="submit"    
+                    type="submit"
                     class="btn btn-primary"
                     ) Tạo mới

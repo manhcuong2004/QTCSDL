@@ -1,0 +1,92 @@
+mixin createGuest(prefixAdmin)
+  .modal.fade#modalCreate(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true")
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#modalCreateLabel Thêm phòng
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(
+            action=`${prefixAdmin}/manage-guests`
+            id="form-create-product"
+            method="POST"
+          )
+            label(for="cccd") Căn cước công dân
+              b(style="color: red;") *
+            input#cccd(
+                type="text" 
+                name="cccd" 
+                placeholder="Căn cước công dân (12 số)" 
+                required)
+
+            label(for="name-guest") Tên khách hàng
+                b(style="color: red;") *
+            input#name-guest(
+                type="text" 
+                name="tenkh" 
+                placeholder="Tên khách hàng" 
+                required)
+
+            label(for="phonenum") SĐT khách
+                b(style="color: red;") *
+            input#phonenum(
+                type="text" 
+                name="sdtkhach" 
+                placeholder="Số điện thoại khách" 
+                required)
+
+            label(for="username") Tên đăng nhập khách
+                b(style="color: red;") *
+            input#username(
+                type="text" 
+                name="tendnkh" 
+                placeholder="Tên đăng nhập" 
+                required)
+
+            label(for="password") Mật khẩu khách 
+                b(style="color: red;") *
+            input#password(
+                type="password" 
+                name="mkkh" 
+                placeholder="Mật khẩu" 
+                required)
+
+            label(for="gender") Giới tính
+                b(style="color: red;") *
+            div#gender
+                input#male(type="radio" name="gioitinh" value="Nam" required)
+                label(for="male") Nam
+                input#female(type="radio" name="gioitinh" value="Nữ" required)
+                label(for="female") Nữ
+                input#other(type="radio" name="gioitinh" value="Khác" required)
+                label(for="other") Khác
+
+            label(for="birthdate") Ngày sinh
+                b(style="color: red;") *
+            input#birthdate(
+                type="date" 
+                name="ngaysinh" 
+                required)
+
+            label(for="hometown") Quê quán
+                b(style="color: red;") *
+            input#hometown(
+                type="text" 
+                name="quequan" 
+                placeholder="Quê quán" 
+                required)
+
+            label(for="name-room") Phòng thuê
+                b(style="color: red;") *
+            input#name-room(
+                type="text" 
+                name="maphong" 
+                placeholder="Phòng thuê" 
+                required)
+            .modal-footer
+              div(class="form-group")
+                button( 
+                    type="submit"    
+                    class="btn btn-primary"
+                    ) Tạo mới
+                    

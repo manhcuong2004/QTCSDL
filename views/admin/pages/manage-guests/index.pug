@@ -1,6 +1,11 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ./create-guest.pug
+include ./edit-guest.pug
 
 block main
+  +alert-success(4000)
+  +alert-error(4000)
   section
     .container.row
       .container-decs.col-4
@@ -8,6 +13,9 @@ block main
         .text-sub Tất cả danh sách khách thuê trong nhà trọ của bạn
       .search.col-6
         input(type="text" placeholder="Tìm kiếm khách thuê")
+      .btn-add.col
+        a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
+          i.fa-solid.fa-plus
     .table-rooms.table-responsive
       table.table.table-bordered
         thead.table-secondary
@@ -48,4 +56,7 @@ block main
                     data-ngaysinh=item.ngaysinh
                     data-room-id=item.maphong
                     ) Sửa
-        
+  +createGuest(prefixAdmin)
+  +editGuest(prefixAdmin)
+  script(src="/js/script.js")
+  script(src="/js/admin/guests.js")

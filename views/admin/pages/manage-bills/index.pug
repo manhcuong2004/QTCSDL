@@ -1,8 +1,9 @@
 extends ../../layouts/default.pug
 include ./create-bill.pug
-
+include ../../mixins/alert.pug
 block main
-
+  +alert-success(4000)
+  +alert-error(4000)
   div.navbar
       button &larr; Năm trước
       .year-label
@@ -43,6 +44,7 @@ block main
           div 2024
       button Năm tới &rarr;
   section
+    
     .container.row
       .container-decs.col-4
         .text Quản lý danh sách hóa đơn
@@ -80,13 +82,25 @@ block main
                     ) Xóa
                   a.btn.btn-warning.btn-edit(
                     type="button" 
-                    data-bs-toggle="modal" 
-                    data-bs-target="#modalEdit" 
+                    button-edit
                     data-bill-id=item.mahoadon
                     data-date=item.ngaytao
                     data-money=item.tongtien
                     data-status=item.trangthai_thanhtoan
                     data-cccd=item.cccd
-                    ) Sửa
-    +createBill(prefixAdmin)
-  script(src="/js/admin/rooms.js")
+                    ) Thay đổi trạng thái
+  form(
+    action=""
+    method="POST"
+    id="form-delete-item"
+    data-path=`${prefixAdmin}/manage-bills/delete`
+    )
+  form(
+    action=""
+    method="POST"
+    id="form-edit-item"
+    data-path=`${prefixAdmin}/manage-bills/edit`
+    )
+  +createBill(prefixAdmin)
+  script(src="/js/admin/bills.js")
+  script(src="/js/script.js")

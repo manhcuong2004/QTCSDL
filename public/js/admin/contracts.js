@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const editModal = document.querySelector("#modalEdit");
-
     editModal.addEventListener("show.bs.modal", (event) => {
         const button = event.relatedTarget; // Nút được nhấn
         const roomId = button.getAttribute("data-room-id");
@@ -23,7 +22,7 @@ if (buttonDelete.length > 0) {
     const path = formDeleteItem.getAttribute("data-path");
     buttonDelete.forEach(button => {
         button.addEventListener("click", () => {
-            const isConfirm = confirm("Bạn có chắc muốn xóa phòng này?");
+            const isConfirm = confirm("Bạn có chắc muốn xóa phòng này này?");
             if (isConfirm) {
                 const id = button.getAttribute("data-id");
                 const action = `${path}/${id}?_method=DELETE`;
@@ -33,14 +32,5 @@ if (buttonDelete.length > 0) {
         });
     });
 }
-let FocusInput = (Modal, Input) => {
-    let myModal = document.getElementById(Modal);
-    let myInput = document.getElementById(Input);
-    myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus();
-    });
-}
 
 
-FocusInput('modalCreate', 'name-room')
-FocusInput('modalEdit', 'area-edit')

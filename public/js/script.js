@@ -1,11 +1,4 @@
 
-let FocusInput = (Modal, Input) => {
-    let myModal = document.getElementById(Modal);
-    let myInput = document.getElementById(Input);
-    myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus();
-    });
-}
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -29,5 +22,4 @@ document.querySelector(".logout").addEventListener("click", (event) => {
     }
 });
 
-FocusInput('modalCreate', 'name-room')
-FocusInput('modalEdit', 'area-edit')
+

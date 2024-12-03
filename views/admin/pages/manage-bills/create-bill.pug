@@ -3,7 +3,7 @@ mixin createBill(prefixAdmin)
     .modal-dialog.modal-dialog-scrollable
       .modal-content
         .modal-header
-          h5.modal-title#modalCreateLabel Thêm phòng
+          h5.modal-title#modalCreateLabel Thêm Hóa đơn
           button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
         .modal-body
           form(
@@ -11,7 +11,7 @@ mixin createBill(prefixAdmin)
             id="form-create-product"
             method="POST"
           )
-            label(for="name-room") 
+            label(for="name-room") Mã phòng
               b(style="color: red;") *
             input#name-room(
               type="text" 
@@ -19,32 +19,18 @@ mixin createBill(prefixAdmin)
               placeholder="Tên phòng" 
               required)
 
-            label(for="area") Diện tích 
+            label(for="area") CCCD
               b(style="color: red;") *
             input#area(
               type="text" 
-              name="dientich" 
-              placeholder="Diện tích" 
+              name="cccd" 
+              placeholder="Căn cước công dân (12 số)" 
               required)
 
-            label(for="countofp") Số lượng người 
-              b(style="color: red;") *
-            input#countofp(
-              type="text" 
-              name="soluongnguoi" 
-              placeholder="Số lượng người" 
-              required)
-
-            label(for="price") Giá 
-              b(style="color: red;") *
-            input#price(
-              type="text" 
-              name="gia" 
-              placeholder="Giá" 
-              required)
             .modal-footer
               div(class="form-group")
                 button( 
                     type="submit"    
                     class="btn btn-primary"
                     ) Tạo mới
+  

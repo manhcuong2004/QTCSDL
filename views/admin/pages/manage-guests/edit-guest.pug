@@ -1,4 +1,4 @@
-mixin editRoom(prefixAdmin)
+mixin editGuest(prefixAdmin)
   .modal.fade#modalEdit(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true")
     .modal-dialog.modal-dialog-scrollable
       .modal-content
@@ -12,23 +12,23 @@ mixin editRoom(prefixAdmin)
             method="POST"
           )
             //- input(type="hidden" name="_method" value="PUT")
-            label(for="name-room-edit") Tên phòng 
+            label(for="name-room-edit") Căn cước công dân
                 b(style="color: red;") *
             input#name-room-edit(
                 type="text" 
-                name="maphong" 
-                placeholder="Tên phòng" 
+                name="cccd" 
+                placeholder="Căn cước công dân (12 số)" 
                 readonly)
 
-            label(for="area-edit") Diện tích 
+            label(for="area-edit") Tên khách hàng
                 b(style="color: red;") *
             input#area-edit(
                 type="text" 
-                name="dientich" 
-                placeholder="Diện tích" 
+                name="tenkh" 
+                placeholder="Tên khách hàng" 
                 required)
 
-            label(for="countofp-edit") Số lượng người 
+            label(for="countofp-edit") SĐT khách
                 b(style="color: red;") *
             input#countofp-edit(
                 type="text" 
@@ -36,7 +36,7 @@ mixin editRoom(prefixAdmin)
                 placeholder="Số lượng người" 
                 required)
 
-            label(for="status-edit") Trạng thái phòng 
+            label(for="status-edit") Tên đăng nhập khách
                 b(style="color: red;") *
             input#status-edit(
                 type="text" 
@@ -44,7 +44,36 @@ mixin editRoom(prefixAdmin)
                 placeholder="Trạng thái" 
                 readonly)
 
-            label(for="price-edit") Giá 
+            label(for="price-edit") Mật khẩu khách 
+                b(style="color: red;") *
+            input#price-edit(
+                type="text" 
+                name="gia" 
+                placeholder="Giá" 
+                required)
+
+            label(for="price-edit") Giới tính
+                b(style="color: red;") *
+            input#price-edit(
+                type="text" 
+                name="gia" 
+                placeholder="Giá" 
+                required)
+            label(for="price-edit") Ngày sinh
+                b(style="color: red;") *
+            input#price-edit(
+                type="text" 
+                name="gia" 
+                placeholder="Giá" 
+                required)
+            label(for="price-edit") Quê quán
+                b(style="color: red;") *
+            input#price-edit(
+                type="text" 
+                name="gia" 
+                placeholder="Giá" 
+                required)
+            label(for="price-edit") Phòng thuê
                 b(style="color: red;") *
             input#price-edit(
                 type="text" 

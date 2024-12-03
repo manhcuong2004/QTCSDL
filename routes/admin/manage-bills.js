@@ -3,5 +3,10 @@ const router = express.Router()
 const controller = require('../../controllers/admin/manage-bills')
 
 router.get('/', controller.manageBill)
+router.post('/', controller.create);
 
+router.put('/edit/:id', controller.edit);
+
+router.delete('/delete/:id', controller.delete);
+module.exports = router;
 module.exports = router;
