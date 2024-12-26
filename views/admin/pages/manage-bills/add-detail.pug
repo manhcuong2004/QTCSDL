@@ -1,0 +1,44 @@
+mixin detailBill(prefixAdmin, tieudung)
+  .modal.fade#modalDetail(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true")
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#modalDetailLabel Thêm chi tiết tiêu dùng
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(
+            action=`${prefixAdmin}/manage-bills/add-detail`
+            id="form-add-detail"
+            method="POST"
+          )
+            label(for="mahoadon") Mã hóa đơn
+                b(style="color: red;") *
+            input#mahoadon(
+                type="text" 
+                name="mahoadon" 
+                readonly)
+            hr
+            h4 Danh sách dịch vụ:
+            hr
+            each item in tieudung
+                div.form-check
+                    input.form-check-input(
+                    type="checkbox"
+                    name="matieudung"
+                    value=item.matieudung
+                    onchange="toggleInputs(this)"
+                    )
+                    label.form-check-label(for=item.matieudung) Dịch vụ: #{item.tentieudung}
+                    div(class="input-group")
+                    label Số lượng
+                    input(type="number" name="soluong")
+                    label Khuyến mãi
+                    input(type="number" name="khuyenmai")
+                    label Giá: #{item.giaban}
+            .modal-footer
+              div(class="form-group")
+                button( 
+                    type="submit"    
+                    class="btn btn-primary"
+                    ) Tạo mới
+  

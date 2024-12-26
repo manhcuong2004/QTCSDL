@@ -1,21 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
     const editModal = document.querySelector("#modalEdit");
+
     editModal.addEventListener("show.bs.modal", (event) => {
         const button = event.relatedTarget; // Nút được nhấn
+        const contractId = button.getAttribute("data-contract-id");
+        const dateend = button.getAttribute("data-date-end");
+        const money = button.getAttribute("data-money");
+        const cccd = button.getAttribute("data-cccd");
         const roomId = button.getAttribute("data-room-id");
-        const area = button.getAttribute("data-area");
-        const people = button.getAttribute("data-people");
-        const status = button.getAttribute("data-status");
-        const price = button.getAttribute("data-price");
 
-        editModal.querySelector("#name-room-edit").value = roomId;
-        editModal.querySelector("#area-edit").value = area;
-        editModal.querySelector("#countofp-edit").value = people;
-        editModal.querySelector("#status-edit").value = status;
-        editModal.querySelector("#price-edit").value = price;
+        editModal.querySelector("#mahopdong").value = contractId;
+        editModal.querySelector("#ngayhethan").value = dateend;
+        editModal.querySelector("#sotien_coc").value = money;
+        editModal.querySelector("#cccd").value = cccd;
+        editModal.querySelector("#maphong").value = roomId;
     });
 });
-
 const buttonDelete = document.querySelectorAll("[button-delete]");
 if (buttonDelete.length > 0) {
     const formDeleteItem = document.querySelector('#form-delete-item');

@@ -114,6 +114,14 @@ a {
 
 }
 
+.notification:hover,
+.account:hover,
+.logout:hover,
+.manage-home:hover {
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
 .name-function {
     color: white;
 }
@@ -180,6 +188,11 @@ nav {
     justify-content: center;
 }
 
+.manage:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
 .manage i {
     font-size: 200%;
     padding: 10px;
@@ -219,21 +232,32 @@ section {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    /* Căn giữa nội dung theo chiều dọc */
     height: 40px;
+}
 
+.search form {
+    width: 80%;
+    /* Đảm bảo form chiếm toàn bộ chiều ngang */
+    display: flex;
+    /* Căn chỉnh các phần tử bên trong form */
+    justify-content: center;
+    /* Căn giữa theo chiều ngang */
 }
 
 .search input {
-    width: 60%;
+    width: 50%;
     border: 0;
     background-color: #EFEBEB;
     box-shadow: 2px 2px 2px 2px #888888 inset;
     border-radius: 20px;
-
+    padding-left: 10px;
+    border-radius: 20px;
+    /* Để căn chỉnh nội dung gõ trong input */
 }
 
 .search input::placeholder {
-    padding-left: 10px;
     opacity: 1;
 }
 
@@ -348,7 +372,7 @@ footer {
 }
 
 /* Form container */
-form {
+.modal-body form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;

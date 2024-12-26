@@ -1,5 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/alert.pug
+include ../../mixins/alert.pug
+
 include ./create-room.pug
 include ./edit-room.pug
 
@@ -11,8 +13,18 @@ block main
       .container-decs.col-5
         .text Quản lý danh sách phòng
         .text-sub Tất cả danh sách phòng trong Nhà trọ MK
+      //- .search.col-5
+      //-   input(type="text" placeholder="Tìm kiếm phòng")
+
       .search.col-5
-        input(type="text" placeholder="Tìm kiếm phòng")
+        form(action=`${prefixAdmin}/manage-rooms` method="GET")
+            input(
+              type="text"
+              id="find" 
+              name="keyword" 
+              placeholder="Tìm kiếm phòng" 
+              value=`${typeof keyword !== 'undefined' ? keyword : ''}`
+            )
       .btn-add.col
         a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
           i.fa-solid.fa-plus
@@ -46,6 +58,7 @@ block main
                     type="button" 
                     data-bs-toggle="modal" 
                     data-bs-target="#modalEdit" 
+                    data-contract-id=item.mahopdong
                     data-room-id=item.maphong
                     data-area=item.dientich
                     data-people=item.soluongnguoi

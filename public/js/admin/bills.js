@@ -48,3 +48,23 @@ if (buttonDelete.length > 0) {
         });
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const AddDetailModal = document.querySelector("#modalDetail");
+
+    AddDetailModal.addEventListener("show.bs.modal", (event) => {
+        const button = event.relatedTarget; // Nút được nhấn
+        const Id = button.getAttribute("data-id");
+
+
+        AddDetailModal.querySelector("#mahoadon").value = Id;
+
+    });
+});
+
+function toggleInputs(checkbox) {
+    const inputs = checkbox.closest('.form-check').querySelectorAll('input[type="number"]');
+    inputs.forEach(input => {
+        input.disabled = !checkbox.checked;
+    });
+}

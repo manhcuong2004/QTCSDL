@@ -6,8 +6,15 @@ block main
       .container-decs.col-4
         .text Quản lý tài khoản khách thuê
         .text-sub Tất cả tải khoản khách thuê trong nhà trọ
-      .search.col-6
-        input(type="text" placeholder="Tìm kiếm tài khoản khách thuê")
+      .search.col-5
+        form(action=`${prefixAdmin}/account-customers` method="GET")
+            input(
+              type="text"
+              id="find" 
+              name="keyword" 
+              placeholder="Tìm kiếm tên đăng nhập" 
+              value=`${typeof keyword !== 'undefined' ? keyword : ''}`
+            )
     .table-rooms.table-responsive
       table.table.table-bordered
         thead.table-secondary

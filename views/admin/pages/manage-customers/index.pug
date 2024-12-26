@@ -1,7 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/alert.pug
-include ./create-guest.pug
-include ./edit-guest.pug
+include ./create-customer.pug
+include ./edit-customer.pug
 
 block main
   +alert-success(4000)
@@ -11,8 +11,15 @@ block main
       .container-decs.col-4
         .text Quản lý danh sách khách thuê
         .text-sub Tất cả danh sách khách thuê trong nhà trọ của bạn
-      .search.col-6
-        input(type="text" placeholder="Tìm kiếm khách thuê")
+      .search.col-5
+        form(action=`${prefixAdmin}/manage-customers` method="GET")
+            input(
+              type="text"
+              id="find" 
+              name="keyword" 
+              placeholder="Tìm kiếm tên khách thuê" 
+              value=`${typeof keyword !== 'undefined' ? keyword : ''}`
+            )
       .btn-add.col
         a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
           i.fa-solid.fa-plus
@@ -29,7 +36,7 @@ block main
             th Phòng ở
             th Xóa | Sửa
         tbody.table-success
-          each item in guests
+          each item in customers
             tr
               td #{item.cccd}
               td #{item.tenkh}
@@ -54,9 +61,16 @@ block main
                     data-phoneNumber=item.sdtkhach
                     data-gender=item.gioitinh
                     data-ngaysinh=item.ngaysinh
+                    data-quequan=item.quequan
                     data-room-id=item.maphong
                     ) Sửa
-  +createGuest(prefixAdmin)
-  +editGuest(prefixAdmin)
+  form(
+    action=""
+    method="POST"
+    id="form-delete-item"
+    data-path=`${prefixAdmin}/manage-customers/delete`
+    )
+  +createcustomer(prefixAdmin)
+  +editcustomer(prefixAdmin)
   script(src="/js/script.js")
-  script(src="/js/admin/guests.js")
+  script(src="/js/admin/customers.js")

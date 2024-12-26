@@ -1,0 +1,57 @@
+mixin editContract(prefixAdmin)
+  .modal.fade#modalEdit(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true")
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h5.modal-title#modalEditLabel Sửa hợp đồng
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(
+            action=`${prefixAdmin}/manage-contracts?_method=PUT`
+            id="form-edit-contract"
+            method="POST"
+          )
+            label(for="mahopdong") Mã hợp đồng
+                b(style="color: red;") *
+            input#mahopdong(
+                type="text" 
+                name="mahopdong" 
+                readonly)
+            label(for="ngayhethan") Ngày hết hạn 
+              b(style="color: red;") *
+            input#ngayhethan(
+              type="text" 
+              name="ngayhethan" 
+              placeholder="Ngày hết hạn" 
+              required)
+
+            label(for="sotien_coc") Số tiền cọc
+              b(style="color: red;") *
+            input#sotien_coc(
+              type="text" 
+              name="sotien_coc" 
+              placeholder="Số tiền cọc" 
+              required)
+
+            label(for="cccd") CCCD
+              b(style="color: red;") *
+            input#cccd(
+              type="text" 
+              name="cccd" 
+              placeholder="CCCD" 
+              required)
+
+            label(for="maphong") Phòng
+              b(style="color: red;") *
+            input#maphong(
+              type="text" 
+              name="maphong" 
+              placeholder="Phòng" 
+              required)
+            .modal-footer
+              div(class="form-group")
+                button( 
+                    type="submit"    
+                    class="btn btn-primary"
+                    ) Cập nhật
+        

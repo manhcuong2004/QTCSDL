@@ -1,14 +1,35 @@
 const { connect, sql } = require('../../config/database')
+const dayjs = require("dayjs");
+const FindBillHelper = require("../../public/js/findHelper");
 
 
 module.exports.manageBill = async (req, res) => {
     try {
+
         let pool = await connect;
-        let result = await pool.request().query("select * from hoadon where deleted = 0");
+        const objectSearch = FindBillHelper(req.query);
+        let tieudung = await pool.request().query("select * from tieudung");
+
+        let query = "select * from hoadon where deleted = 0";
+        // Lấy thông tin tìm kiếm từ query
+
+        if (objectSearch.regex) {
+            query += ` and maphong LIKE '%${objectSearch.keyword}%'`;
+        }
+
+        let result = await pool.request().query(query);
         const bills = result.recordset
+        const tieudungs = tieudung.recordset
+
+        const formattedBills = bills.map(bill => ({
+            ...bill,
+            ngaytao: dayjs(bill.ngaytao).format("YYYY/MM/DD"),
+        }));
+
         res.render('admin/pages/manage-bills/index.pug', {
             pageTitle: "Quản lí hóa đơn",
-            bills: bills
+            bills: formattedBills,
+            tieudung: tieudungs
         })
     } catch (err) {
         console.log("Error:", err);
@@ -66,3 +87,23 @@ module.exports.delete = async (req, res) => {
         return res.redirect(req.headers.referer || '/');
     }
 };
+
+module.exports.addDetail = async (req, res) => {
+    try {
+        const pool = await connect;
+        console.log(req.body)
+        await pool.request()
+            .input('mahoadon', sql.Char(10), req.body.mahoadon)
+            .input('matieudung', sql.Char(10), req.body.matieudung)
+            .input('soluong', sql.Int, req.body.soluong)
+            .input('khuyenmai', sql.Money, req.body.khuyenmai)
+            .execute('spCreateCTHD')
+        req.flash('success', 'Add service success!');
+        res.redirect(req.headers.referer);
+    } catch (err) {
+        console.error("Error ddd service:", err.message || err);
+        req.flash('error', err.message);
+        return res.redirect(req.headers.referer || '/');
+    }
+};
+

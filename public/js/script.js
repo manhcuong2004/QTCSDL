@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const alertBox = document.querySelector(".alert[show-alert]");
     if (alertBox) {
@@ -14,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
 document.querySelector(".logout").addEventListener("click", (event) => {
     const confirmBox = confirm("Bạn có chắc muốn đăng xuất?");
 
@@ -21,5 +19,4 @@ document.querySelector(".logout").addEventListener("click", (event) => {
         event.preventDefault();
     }
 });
-
 

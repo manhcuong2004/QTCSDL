@@ -14,8 +14,11 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 app.use(methodOverride('_method'))
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true,
+    parameterLimit: 100000, // Số lượng tham số tối đa
+    limit: '10mb' // Giới hạn kích thước dữ liệu
+})); app.use(bodyParser.json());
 app.use(flash());
 app.use(expresSession({
     secret: 'cuongcookcool',

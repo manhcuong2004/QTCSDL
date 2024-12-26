@@ -1,5 +1,6 @@
 extends ../../layouts/default.pug
 include ./create-bill.pug
+include ./add-detail.pug
 include ../../mixins/alert.pug
 block main
   +alert-success(4000)
@@ -49,8 +50,15 @@ block main
       .container-decs.col-4
         .text Quản lý danh sách hóa đơn
         .text-sub Bạn sẽ thấy các hóa đơn hàng tháng được lập 
-      .search.col-6
-        input(type="text" placeholder="Tìm kiếm hóa đơn")
+      .search.col-5
+        form(action=`${prefixAdmin}/manage-bills` method="GET")
+            input(
+              type="text"
+              id="find" 
+              name="keyword" 
+              placeholder="Tìm kiếm tên phòng có hóa đơn" 
+              value=`${typeof keyword !== 'undefined' ? keyword : ''}`
+            )
       .btn-add.col
         a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
           i.fa-solid.fa-plus
@@ -75,6 +83,13 @@ block main
               td #{item.cccd}
               td 
                 .btn-action
+                  a.btn.btn-secondary.btn-add-detail(
+                    type="button"
+                    button-detail
+                    data-id=item.mahoadon
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalDetail"
+                    ) Tiêu dùng
                   button.btn.btn-danger.btn-delete(
                     type="button" 
                     data-id=item.mahoadon
@@ -102,5 +117,6 @@ block main
     data-path=`${prefixAdmin}/manage-bills/edit`
     )
   +createBill(prefixAdmin)
+  +detailBill(prefixAdmin, tieudung)
   script(src="/js/admin/bills.js")
   script(src="/js/script.js")

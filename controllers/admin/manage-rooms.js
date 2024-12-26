@@ -1,20 +1,29 @@
 const { connect, sql } = require('../../config/database')
+const FindRoomHelper = require("../../public/js/findHelper")
 
 module.exports.manageRoom = async (req, res) => {
     try {
         let pool = await connect;
-        let result = await pool.request().query("select * from phongtro");
-        const rooms = result.recordset
-        res.render('admin/pages/manage-rooms/index.pug', {
+
+        // Lấy thông tin tìm kiếm từ query
+        const objectSearch = FindRoomHelper(req.query);
+
+        let query = "SELECT * FROM phongtro";
+        if (objectSearch.regex) {
+            query += ` WHERE maphong LIKE '%${objectSearch.keyword}%'`;
+        }
+        let result = await pool.request().query(query);
+        const rooms = result.recordset;
+
+        res.render("admin/pages/manage-rooms/index.pug", {
             pageTitle: "Quản lí phòng trọ",
-            rooms: rooms
+            rooms: rooms,
         });
     } catch (err) {
-        console.log("Error:", err);
-        req.flash('error', 'Có lỗi xảy ra khi xóa phòng!');
+        console.error("Error:", err);
         res.status(500).send("Lỗi hệ thống");
     }
-}
+};
 module.exports.create = async (req, res) => {
     try {
         const pool = await connect;

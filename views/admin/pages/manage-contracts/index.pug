@@ -1,6 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/alert.pug
 include ./create-contract.pug
+include ./edit-contract.pug
 
 block main
   section
@@ -11,7 +12,14 @@ block main
         .text Quản lý danh sách hợp đồng 
         .text-sub Tất cả danh sách hợp đồng trong nhà trọ của bạn
       .search.col-5
-        input(type="text" placeholder="Tìm kiếm hợp đồng")
+        form(action=`${prefixAdmin}/manage-contracts` method="GET")
+            input(
+              type="text"
+              id="find" 
+              name="keyword" 
+              placeholder="Tìm kiếm hợp đồng dựa theo phòng" 
+              value=`${typeof keyword !== 'undefined' ? keyword : ''}`
+            )
       .btn-add.col
         a.add-room.col(type="button" data-bs-toggle="modal" data-bs-target="#modalCreate")
           i.fa-solid.fa-plus
@@ -57,7 +65,14 @@ block main
                     data-cccd=item.cccd
                     data-room-id=item.maphong
                     ) Sửa
+  form(
+    action=""
+    method="POST"
+    id="form-delete-item"
+    data-path=`${prefixAdmin}/manage-contracts/delete`
+    )
   +createContract(prefixAdmin)
+  +editContract(prefixAdmin)
   script(src="/js/admin/contracts.js")
   script(src="/js/script.js")
 
